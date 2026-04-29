@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closure Cart Test</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="kutu">
+    <h1>Secure E-Commerce</h1>
+
+    <div id="yeni-urun-alani" style="background-color: #ddd; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+        <h4 style="margin-top: 0;">Create Your Own Product</h4>
+        <input type="text" id="yeni-urun-adi" placeholder="Product Name (e.g., Mouse)" style="padding: 5px; width: 40%; margin-bottom: 10px;">
+        <input type="number" id="yeni-urun-fiyat" placeholder="Price" style="padding: 5px; width: 30%; margin-bottom: 10px;">
+        <br>
+        <button id="kendi-butonumu-ekle-btn" class="test-btn" style="background-color: #007bff;">➕ Create Button</button>
+    </div>
+
+    <div class="urunler" id="urunler-kutusu">
+        <button id="elma-btn" class="urun-btn">🍏 Add Apple (20 TL)</button>
+        <button id="laptop-btn" class="urun-btn">💻 Add Laptop (25,000 TL)</button>
+    </div>
+
+    <div class="sonuc-ekrani">
+        <h2>Total Due: <span id="bakiye-gosterge">0</span> TL</h2>
+        <p id="bilgi-mesaji">Start adding products to your cart...</p>
+    </div>
+
+    <hr>
+
+    <div class="test-alani">
+        <button id="hacker-btn" class="test-btn">🏴‍☠️ Execute Hacker Attack</button>
+        <button id="cikis-btn" class="test-btn" style="background-color: darkred;">🗑️ Shut Down System</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

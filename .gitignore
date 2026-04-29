@@ -1,0 +1,12 @@
+/shelf/
+/queries/
+/dataSources/
+/dataSources.local.xml
+/httpRequests/
+.idea/
+*.iml
+.DS_Store
+Thumbs.db
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
