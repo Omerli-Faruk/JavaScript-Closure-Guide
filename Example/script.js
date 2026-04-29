@@ -14,9 +14,9 @@ function createSecureCart(apiBaseUrl) {
                 cartTotal += price; // Add price to the total
 
                 // Update the UI (For visual feedback)
-                document.getElementById('bakiye-gosterge').innerText = cartTotal;
-                document.getElementById('bilgi-mesaji').innerText = `[API] Request sent to ${apiBaseUrl}. ${productName} added to cart!`;
-                document.getElementById('bilgi-mesaji').style.color = "green";
+                document.getElementById('balance-indicator').innerText = cartTotal;
+                document.getElementById('information-message').innerText = `[API] Request sent to ${apiBaseUrl}. ${productName} added to cart!`;
+                document.getElementById('information-message').style.color = "green";
             }
         },
 
@@ -35,7 +35,7 @@ let myCart = createSecureCart("https://api.mysite.com/add-to-cart");
 
 /*
 If we didn't use closures, we would have to do this for EVERY button:
-    const APPLE = document.getElementById('elma-btn')
+    const APPLE = document.getElementById('apple-btn')
     APPLE.addEventListener('click', () => {
         createSecureCart("https://api.mysite.com/add-to-cart", "Apple", 20)
     })
@@ -44,13 +44,13 @@ and POINT 3 prevents us from rewriting "https://api.mysite.com/add-to-cart" ever
 */
 
 // Assigning tasks to the static buttons that already exist in HTML
-document.getElementById('elma-btn').onclick = myCart.generateButtonTask("Apple", 20);
+document.getElementById('apple-btn').onclick = myCart.generateButtonTask("Apple", 20);
 document.getElementById('laptop-btn').onclick = myCart.generateButtonTask("Laptop", 25000);
 
 // ==========================================
 // 3. DYNAMICALLY CREATING CUSTOM BUTTONS (FACTORY TEST)
 // ==========================================
-document.getElementById('kendi-butonumu-ekle-btn').onclick = function () {
+document.getElementById('add-your-btn').onclick = function () {
     // Stop the process if the system is shut down
     if (!myCart) {
         alert("System is offline! You cannot add products.");
@@ -58,8 +58,8 @@ document.getElementById('kendi-butonumu-ekle-btn').onclick = function () {
     }
 
     // Get values from the inputs
-    let productName = document.getElementById('yeni-urun-adi').value;
-    let productPrice = Number(document.getElementById('yeni-urun-fiyat').value);
+    let productName = document.getElementById('new-product-name').value;
+    let productPrice = Number(document.getElementById('new-product-price').value);
 
     // Warn if inputs are empty or invalid
     if (!productName || productPrice <= 0) {
@@ -69,7 +69,7 @@ document.getElementById('kendi-butonumu-ekle-btn').onclick = function () {
 
     // A) Create the new Button as an HTML element
     let newButton = document.createElement("button");
-    newButton.className = "urun-btn"; // Inherit the same CSS styling
+    newButton.className = "product-btn"; // Inherit the same CSS styling
     newButton.innerText = `🛒 Add ${productName} (${productPrice} TL)`;
     newButton.style.backgroundColor = "#ff9800"; // Colored orange to distinguish dynamic buttons
 
@@ -77,15 +77,15 @@ document.getElementById('kendi-butonumu-ekle-btn').onclick = function () {
     newButton.onclick = myCart.generateButtonTask(productName, productPrice);
 
     // C) Append the button to the screen
-    document.getElementById('urunler-kutusu').appendChild(newButton);
+    document.getElementById('products-box').appendChild(newButton);
 
     // D) Clear the input fields
-    document.getElementById('yeni-urun-adi').value = "";
-    document.getElementById('yeni-urun-fiyat').value = "";
+    document.getElementById('new-product-name').value = "";
+    document.getElementById('new-product-price').value = "";
 
     // Inform the user on the screen
-    document.getElementById('bilgi-mesaji').innerText = `✨ '${productName}' button was dynamically created!`;
-    document.getElementById('bilgi-mesaji').style.color = "blue";
+    document.getElementById('information-message').innerText = `✨ '${productName}' button was dynamically created!`;
+    document.getElementById('information-message').style.color = "blue";
 };
 
 
@@ -103,25 +103,25 @@ document.getElementById('hacker-btn').onclick = function () {
     // Let's read the actual balance to see if it was reset
     let actualBalance = myCart.showBalance();
 
-    document.getElementById('bilgi-mesaji').innerText = `🚨 Hacker tried to reset the total, but failed! Actual Balance is still: ${actualBalance} TL`;
-    document.getElementById('bilgi-mesaji').style.color = "red";
+    document.getElementById('information-message').innerText = `🚨 Hacker tried to reset the total, but failed! Actual Balance is still: ${actualBalance} TL`;
+    document.getElementById('information-message').style.color = "red";
 };
 
 // --- SHUTDOWN / GARBAGE COLLECTOR TEST ---
-document.getElementById('cikis-btn').onclick = function () {
+document.getElementById('exit-btn').onclick = function () {
 
     // 1- CLEAR MEMORY (JavaScript side - Triggers Garbage Collector)
     myCart = null;
 
     // 2- DELETE ALL BUTTONS FROM THE SCREEN (HTML Side)
     // Deletes everything inside the products container (including dynamic ones).
-    document.getElementById('urunler-kutusu').innerHTML = "";
+    document.getElementById('products-box').innerHTML = "";
 
     // Hide the new product creation panel as well
-    document.getElementById('yeni-urun-alani').style.display = "none";
+    document.getElementById('new-product-space').style.display = "none";
 
     // 3- Print info to the screen
-    document.getElementById('bakiye-gosterge').innerText = "---";
-    document.getElementById('bilgi-mesaji').innerText = "🗑️ Cart deleted from memory, buttons removed from the screen!";
-    document.getElementById('bilgi-mesaji').style.color = "black";
+    document.getElementById('balance-indicator').innerText = "---";
+    document.getElementById('information-message').innerText = "🗑️ Cart deleted from memory, buttons removed from the screen!";
+    document.getElementById('information-message').style.color = "black";
 };

@@ -10,7 +10,7 @@ body {
 }
 
 /* Main application container */
-.kutu {
+.box {
     background-color: white;
     padding: 30px;
     border-radius: 10px;
@@ -27,7 +27,7 @@ h1 {
 }
 
 /* Products container (flexbox layout for stacking) */
-.urunler {
+.products {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -35,7 +35,7 @@ h1 {
 }
 
 /* Product button styling */
-.urun-btn {
+.product-btn {
     padding: 15px;
     font-size: 16px;
     background-color: #4CAF50;
@@ -47,12 +47,12 @@ h1 {
 }
 
 /* Product button hover effect */
-.urun-btn:hover {
+.product-btn:hover {
     background-color: #45a049;
 }
 
 /* Result screen container */
-.sonuc-ekrani {
+.result-screen {
     background-color: #e9ecef;
     padding: 15px;
     border-radius: 5px;
@@ -60,21 +60,21 @@ h1 {
 }
 
 /* Balance display text */
-#bakiye-gosterge {
+#balance-indicator {
     font-weight: bold;
     color: #d9534f;
     font-size: 28px;
 }
 
 /* Information message text */
-#bilgi-mesaji {
+#information-message {
     font-size: 14px;
     color: #555;
     margin-top: 10px;
 }
 
 /* Test area container */
-.test-alani {
+.test-space {
     margin-top: 20px;
 }
 
