@@ -55,7 +55,7 @@ function fetchData(baseUrl, endpoint) {
 }
 
 fetchData("https://api.mysite.com", "/users");
-fetchData("https://api.mysite.com", "/products");
+fetchData("https://api.anotherwebsite.com", "/posts");
 ```
 
 **With Closures:**
@@ -65,15 +65,16 @@ You can "lock in" the base URL once, and just pass the endpoints later.
 function configureServer(baseUrl) {
 return function(endpoint) {
 console.log(`Navigating to ${baseUrl}${endpoint}...`);
-}
+	}
 }
 
 // Memorize the base URL
 const fetchFromMySite = configureServer("https://api.mysite.com");
+const fetchFromAnotherSite = configreServer("https://api.anotherwebsite.com");
 
 // Now simply call the endpoint!
 fetchFromMySite("/users");
-fetchFromMySite("/products");
+fetchFromAnotherSite("/posts");
 ```
 
 ## 🔒 4. Data Privacy & Encapsulation
