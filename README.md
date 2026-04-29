@@ -54,8 +54,8 @@ function fetchData(baseUrl, endpoint) {
     console.log(`Navigating to ${baseUrl}${endpoint}...`);
 }
 
-fetchData("[https://api.mysite.com](https://api.mysite.com)", "/users");
-fetchData("[https://api.mysite.com](https://api.mysite.com)", "/products");
+fetchData("https://api.mysite.com", "/users");
+fetchData("https://api.mysite.com", "/products");
 ```
 
 **With Closures:**
@@ -69,7 +69,7 @@ console.log(`Navigating to ${baseUrl}${endpoint}...`);
 }
 
 // Memorize the base URL
-const fetchFromMySite = configureServer("[https://api.mysite.com](https://api.mysite.com)");
+const fetchFromMySite = configureServer("https://api.mysite.com");
 
 // Now simply call the endpoint!
 fetchFromMySite("/users");
